@@ -1,0 +1,11 @@
+{
+  "name": "day-18-sentiment-analyzer",
+  "version": "1.0.0",
+  "description": "NLP Sentiment Analysis (Positive/Negative/Neutral) — Day 18 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["nlp", "sentiment", "analysis", "text", "emotion", "lexicon", "ai"],
+  "license": "MIT"
+}
