@@ -1,0 +1,28 @@
+{
+  "name": "day-01-text-compressor",
+  "version": "1.0.0",
+  "description": "Run-Length Encoding compressor/decompressor with CLI — Day 01 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start":       "node index.js",
+    "test":        "jest --coverage --verbose",
+    "test:watch":  "jest --watch",
+    "bench":       "node benchmark.js"
+  },
+  "keywords": ["RLE", "compression", "algorithm", "scripting"],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches":   90,
+        "functions":  100,
+        "lines":      95,
+        "statements": 95
+      }
+    }
+  }
+}
