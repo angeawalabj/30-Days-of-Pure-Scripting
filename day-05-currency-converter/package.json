@@ -1,0 +1,27 @@
+{
+  "name": "day-05-currency-converter",
+  "version": "1.0.0",
+  "description": "Real-time currency converter with API and caching — Day 05 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start":       "node index.js",
+    "test":        "jest --coverage --verbose",
+    "test:watch":  "jest --watch"
+  },
+  "keywords": ["currency", "converter", "exchange", "api", "cache", "forex"],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches":   75,
+        "functions":  85,
+        "lines":      80,
+        "statements": 80
+      }
+    }
+  }
+}
