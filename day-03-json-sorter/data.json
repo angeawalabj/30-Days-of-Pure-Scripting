@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Alice",
+    "age": 30,
+    "category": "A",
+    "user": {
+      "profile": {
+        "score": 85
+      }
+    },
+    "items": [10, 20, 30]
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "age": 25,
+    "category": "B",
+    "user": {
+      "profile": {
+        "score": 92
+      }
+    },
+    "items": [15, 25]
+  },
+  {
+    "id": 3,
+    "name": "Charlie",
+    "age": 35,
+    "category": "A",
+    "user": {
+      "profile": {
+        "score": 78
+      }
+    },
+    "items": [5, 10, 15, 20]
+  },
+  {
+    "id": 4,
+    "name": "Diana",
+    "age": 28,
+    "category": "C",
+    "user": {
+      "profile": {
+        "score": 88
+      }
+    },
+    "items": [12]
+  },
+  {
+    "id": 5,
+    "name": "Eve",
+    "age": 32,
+    "category": "B",
+    "user": {
+      "profile": {
+        "score": 95
+      }
+    },
+    "items": [8, 16, 24]
+  }
+]
