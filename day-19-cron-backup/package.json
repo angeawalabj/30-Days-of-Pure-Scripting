@@ -1,0 +1,12 @@
+{
+  "name": "day-19-cron-backup",
+  "version": "1.0.0",
+  "description": "Cron Job Scheduler + Automated Backup System — Day 19 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "demo": "node index.js demo"
+  },
+  "keywords": ["cron", "scheduler", "backup", "automation", "rotation", "restore"],
+  "license": "MIT"
+}
