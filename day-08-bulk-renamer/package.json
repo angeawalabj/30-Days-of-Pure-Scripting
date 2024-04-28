@@ -1,0 +1,27 @@
+{
+  "name": "day-08-bulk-renamer",
+  "version": "1.0.0",
+  "description": "Bulk file renaming with multiple patterns — Day 08 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start":       "node index.js",
+    "test":        "jest --coverage --verbose",
+    "test:watch":  "jest --watch"
+  },
+  "keywords": ["rename", "bulk", "batch", "files", "automation", "sequential"],
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "branches":   80,
+        "functions":  90,
+        "lines":      85,
+        "statements": 85
+      }
+    }
+  }
+}
