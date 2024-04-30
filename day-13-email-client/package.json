@@ -1,0 +1,11 @@
+{
+  "name": "day-13-email-client",
+  "version": "1.0.0",
+  "description": "SMTP email client from scratch — Day 13 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["email", "smtp", "mail", "client", "nodemailer-alternative"],
+  "license": "MIT"
+}
