@@ -1,0 +1,11 @@
+{
+  "name": "day-14-ftp-client",
+  "version": "1.0.0",
+  "description": "FTP client from scratch — Day 14 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["ftp", "client", "file-transfer", "protocol"],
+  "license": "MIT"
+}
