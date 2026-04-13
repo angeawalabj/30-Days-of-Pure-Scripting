@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Days of Pure Scripting Challenge - Production-Ready JavaScript Projects</title>
+    <meta name="description" content="30 jours, 30 projets production-ready, 1,200+ tests, 100% zero dependencies. Le challenge ultime Node.js pour devenir un développeur full-stack.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #111827;
+            --gray: #6b7280;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><rect width="2" height="2" fill="white" opacity="0.1"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Features Section */
+        section {
+            padding: 80px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        section .subtitle-text {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--border);
+            transform: translateX(-50%);
+        }
+
+        .week {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .week-content {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            width: calc(50% - 40px);
+            position: relative;
+        }
+
+        .week:nth-child(odd) .week-content {
+            margin-left: auto;
+        }
+
+        .week-badge {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .week h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .week-projects {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .week-projects li {
+            padding: 8px 0;
+            color: var(--gray);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .week-projects li:last-child {
+            border-bottom: none;
+        }
+
+        .week-projects li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Projects Showcase */
+        .projects-showcase {
+            background: var(--light);
+        }
+
+        .project-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .category {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .category ul {
+            list-style: none;
+        }
+
+        .category li {
+            padding: 8px 0;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .category li::before {
+            content: '→';
+            color: var(--primary);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* Technologies */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .tech-item {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+        }
+
+        .achievement-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            min-width: 200px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .badge-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .badge-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .badge-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .week-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+
+            .week-badge {
+                left: 20px;
+                transform: translateX(0);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Badge colors */
+        .badge-gold { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); }
+        .badge-silver { background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%); }
+        .badge-bronze { background: linear-gradient(135deg, #fb923c 0%, #ea580c 100%); }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container animate">
+            <h1>🚀 30 Days of Pure Scripting</h1>
+            <p class="subtitle">Le Challenge Ultime Node.js</p>
+            <p class="tagline">30 jours · 30 projets production-ready · 100% zero dependencies</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">30</span>
+                    <span class="stat-label">Projets</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1,200+</span>
+                    <span class="stat-label">Tests</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">8,500+</span>
+                    <span class="stat-label">Lignes Code</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Dependencies</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Production</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">Explorer les Projets</a>
+                <a href="#timeline" class="btn btn-secondary">Voir le Timeline</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+        <div class="container">
+            <h2>Pourquoi ce Challenge ?</h2>
+            <p class="subtitle-text">Un parcours intensif de 30 jours pour maîtriser Node.js et devenir un développeur production-ready</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Production-Ready</h3>
+                    <p>Chaque projet est conçu pour être utilisé en production, avec tests, documentation et best practices.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🔧</span>
+                    <h3>Zero Dependencies</h3>
+                    <p>100% Node.js built-ins. Maîtrisez les fondamentaux sans dépendre de bibliothèques externes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🧪</span>
+                    <h3>Test-Driven</h3>
+                    <p>1,200+ tests automatisés. Apprenez à écrire du code fiable et maintenable.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📚</span>
+                    <h3>Documentation</h3>
+                    <p>8,700+ lignes de documentation détaillée avec exemples, benchmarks et comparaisons.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Performance</h3>
+                    <p>Algorithmes optimisés, structures de données efficaces, et analyse de complexité.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🏗️</span>
+                    <h3>Architecture</h3>
+                    <p>Design patterns, SOLID principles, et architecture clean code à chaque projet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" style="background: var(--light);">
+        <div class="container">
+            <h2>Le Parcours en 5 Semaines</h2>
+            <p class="subtitle-text">De l'algorithmique de base aux systèmes de production avancés</p>
+            
+            <div class="timeline">
+                <div class="week">
+                    <div class="week-badge">1</div>
+                    <div class="week-content">
+                        <h3>📊 Semaine 1 : Algorithmique</h3>
+                        <p>Fondations et structures de données</p>
+                        <ul class="week-projects">
+                            <li>RLE Compressor - Compression</li>
+                            <li>Password Generator - Crypto</li>
+                            <li>JSON Sorter - Sorting Algorithms</li>
+                            <li>Palindrome/Anagram - String Algorithms</li>
+                            <li>Currency Converter - API Integration</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week">
+                    <div class="week-badge">2</div>
+                    <div class="week-content">
+                        <h3>🤖 Semaine 2 : Automatisation</h3>
+                        <p>Scripts et outils système</p>
+                        <ul class="week-projects">
+                            <li>File Organizer - File System</li>
+                            <li>Web Scraper - HTML Parsing</li>
+                            <li>Bulk Renamer - Regex</li>
+                            <li>System Monitor - OS Metrics</li>
+                            <li>Log Analyzer - Stream Processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week">
+                    <div class="week-badge">3</div>
+                    <div class="week-content">
+                        <h3>🌐 Semaine 3 : Réseautage</h3>
+                        <p>Protocols et communication</p>
+                        <ul class="week-projects">
+                            <li>REST API Server - HTTP</li>
+                            <li>WebSocket Chat - Real-time</li>
+                            <li>Email Client - SMTP</li>
+                            <li>FTP Client - File Transfer</li>
+                            <li>URL Shortener - Hashing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week">
+                    <div class="week-badge">4</div>
+                    <div class="week-content">
+                        <h3>🚀 Semaine 4 : Concepts Avancés</h3>
+                        <p>ML, Blockchain, NLP</p>
+                        <ul class="week-projects">
+                            <li>Weather + Auth + Webhooks</li>
+                            <li>Chatbot CLI - NLP</li>
+                            <li>Sentiment Analyzer - Text Analysis</li>
+                            <li>Cron + Auto-Backup - Scheduling</li>
+                            <li>Blockchain - Proof of Work</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="week">
+                    <div class="week-badge">5</div>
+                    <div class="week-content">
+                        <h3>⭐ Semaine 5 : Excellence</h3>
+                        <p>Production-ready tools</p>
+                        <ul class="week-projects">
+                            <li>Search Engine - TF-IDF</li>
+                            <li>Build System - Topological Sort</li>
+                            <li>Data Validator - Schemas</li>
+                            <li>Rate Limiter - Token Bucket</li>
+                            <li>Cache System - LRU</li>
+                            <li>Testing Framework - Test Runner</li>
+                            <li>Logger System - Log Rotation</li>
+                            <li>Config Manager - Multi-source</li>
+                            <li>CLI Framework - Args Parser</li>
+                            <li>🎯 DevOps Dashboard - FINAL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="projects-showcase">
+        <div class="container">
+            <h2>30 Projets par Catégorie</h2>
+            <p class="subtitle-text">Couvrant tous les aspects du développement moderne</p>
+            
+            <div class="project-categories">
+                <div class="category">
+                    <h3>🔐 Sécurité</h3>
+                    <ul>
+                        <li>Password Generator</li>
+                        <li>Data Validator</li>
+                        <li>Authentication System</li>
+                        <li>Blockchain</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>⚡ Performance</h3>
+                    <ul>
+                        <li>Cache System (LRU)</li>
+                        <li>Rate Limiter</li>
+                        <li>RLE Compressor</li>
+                        <li>Search Engine (TF-IDF)</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>🌐 Network</h3>
+                    <ul>
+                        <li>REST API Server</li>
+                        <li>WebSocket Chat</li>
+                        <li>Email Client (SMTP)</li>
+                        <li>FTP Client</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>🛠️ DevOps</h3>
+                    <ul>
+                        <li>CLI Framework</li>
+                        <li>Config Manager</li>
+                        <li>Logger System</li>
+                        <li>Testing Framework</li>
+                        <li>Build System</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>📊 Data</h3>
+                    <ul>
+                        <li>JSON Sorter</li>
+                        <li>Web Scraper</li>
+                        <li>Sentiment Analyzer</li>
+                        <li>Log Analyzer</li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <h3>🤖 Automation</h3>
+                    <ul>
+                        <li>File Organizer</li>
+                        <li>Bulk Renamer</li>
+                        <li>Cron Scheduler</li>
+                        <li>Auto-Backup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section id="tech">
+        <div class="container">
+            <h2>Technologies & Compétences</h2>
+            <p class="subtitle-text">Maîtrise complète de l'écosystème Node.js et JavaScript</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">Node.js v18+</div>
+                <div class="tech-item">JavaScript ES2022</div>
+                <div class="tech-item">Jest Testing</div>
+                <div class="tech-item">15+ Data Structures</div>
+                <div class="tech-item">25+ Algorithms</div>
+                <div class="tech-item">10+ Design Patterns</div>
+                <div class="tech-item">HTTP/HTTPS</div>
+                <div class="tech-item">WebSocket</div>
+                <div class="tech-item">SMTP/FTP</div>
+                <div class="tech-item">JWT/OAuth</div>
+                <div class="tech-item">Stream Processing</div>
+                <div class="tech-item">Async/Await</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>🏆 Achievements Unlocked</h2>
+            
+            <div class="achievement-badges">
+                <div class="badge badge-gold">
+                    <span class="badge-icon">🥇</span>
+                    <div class="badge-title">Final Project</div>
+                    <div class="badge-desc">DevOps Dashboard intégrant tous les projets</div>
+                </div>
+                
+                <div class="badge badge-silver">
+                    <span class="badge-icon">🥈</span>
+                    <div class="badge-title">Technical Excellence</div>
+                    <div class="badge-desc">Production-ready tools & frameworks</div>
+                </div>
+                
+                <div class="badge badge-bronze">
+                    <span class="badge-icon">🥉</span>
+                    <div class="badge-title">Advanced Concepts</div>
+                    <div class="badge-desc">Blockchain, NLP, ML algorithms</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">Prêt à relever le défi ?</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.95;">
+                    Rejoignez le challenge et devenez un Production-Ready Developer
+                </p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">Commencer Maintenant</a>
+                    <a href="#" class="btn btn-secondary">Voir le Code Source</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 15px;">
+                <strong>30 Days of Pure Scripting Challenge</strong>
+            </p>
+            <p style="margin-bottom: 20px; color: var(--gray);">
+                30 jours · 30 projets · Zero dependencies · 100% passion
+            </p>
+            <p>
+                Made with ❤️ and countless hours of coding<br>
+                <a href="#">GitHub</a> · 
+                <a href="#">Documentation</a> · 
+                <a href="#">Blog</a>
+            </p>
+            <p style="margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">
+                © 2026 30 Days of Scripting · Keep coding, keep learning, keep building 🚀
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .week, .category').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
