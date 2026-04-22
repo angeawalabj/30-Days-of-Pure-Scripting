@@ -1,0 +1,11 @@
+{
+  "name": "day-12-websocket-chat",
+  "version": "1.0.0",
+  "description": "Real-time WebSocket chat server — Day 12 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["websocket", "chat", "realtime", "messaging", "ws"],
+  "license": "MIT"
+}
