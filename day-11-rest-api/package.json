@@ -1,0 +1,12 @@
+{
+  "name": "day-11-rest-api",
+  "version": "1.0.0",
+  "description": "REST API Server with CRUD operations — Day 11 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": ["rest", "api", "crud", "http", "server", "json"],
+  "license": "MIT"
+}
