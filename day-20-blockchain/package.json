@@ -1,0 +1,11 @@
+{
+  "name": "day-20-blockchain",
+  "version": "1.0.0",
+  "description": "Simplified Blockchain with Proof of Work — Day 20 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["blockchain", "proof-of-work", "mining", "crypto", "hash"],
+  "license": "MIT"
+}
