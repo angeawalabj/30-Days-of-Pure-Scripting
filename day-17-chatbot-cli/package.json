@@ -1,0 +1,11 @@
+{
+  "name": "day-17-chatbot-cli",
+  "version": "1.0.0",
+  "description": "Intelligent CLI Chatbot with pattern matching — Day 17 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["chatbot", "cli", "assistant", "ai", "pattern-matching", "conversation"],
+  "license": "MIT"
+}
