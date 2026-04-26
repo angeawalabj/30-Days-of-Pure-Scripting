@@ -1,0 +1,11 @@
+{
+  "name": "day-16-weather-auth-bot",
+  "version": "1.0.0",
+  "description": "Weather Reporter + JWT Auth + Webhook Bot MEGA COMBO — Day 16 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["weather", "jwt", "auth", "webhook", "discord", "slack", "telegram", "notifications"],
+  "license": "MIT"
+}
