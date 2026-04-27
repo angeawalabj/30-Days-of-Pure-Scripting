@@ -1,0 +1,11 @@
+{
+  "name": "day-15-url-shortener-checker",
+  "version": "1.0.0",
+  "description": "URL Shortener + Dead Link Checker combo — Day 15 of 30 Days Scripting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["url", "shortener", "link", "checker", "redirect", "dead-links"],
+  "license": "MIT"
+}
